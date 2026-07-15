@@ -88,8 +88,37 @@ class MonsterScene extends Phaser.Scene {
                 return `Created a ${params.color} type-${params.shape} body.`;
             }
             // case 'add_arms':    ...
+            case 'add_arms': {
+                if (!this.monster.body) return 'Error: no body exists yet. Call create_body first.';
+                const key = `arm_${params.color}${params.pose}`;
+                const off = PARTS.arm.offset;  // from the manifest
+
+                const rightArm = this.add.image(CENTER_X + off.x, CENTER_Y + off.y, key);
+                const leftArm  = this.add.image(CENTER_X - off.x, CENTER_Y + off.y, key).setFlipX(true);
+
+                this.monster.arms = [leftArm, rightArm];
+                return `Added a mirrored pair of ${params.color} arms.`;
+            }
             // case 'add_legs':    ...
+            case 'add_legs': {
+                if (!this.monster.body) return 'Error: no body exists yet. Call create_body first.';
+                const key = `leg_${params.color}${params.pose}`;
+                const off = PARTS.leg.offset;  // from the manifest
+
+                const rightLeg = this.add.image(CENTER_X + off.x, CENTER_Y + off.y, key);
+                const leftLeg  = this.add.image(CENTER_X - off.x, CENTER_Y + off.y, key)
+                    .setFlipX(true);
+
+                this.monster.arms = [leftLeg, rightLeg];
+                return `Added a mirrored pair of ${params.color} legs.`;
+            }
             // case 'add_eyes':    ...
+            case 'create_eyes': {
+                this.clearMonster();  // provided in starter code
+                const key = `body_${params.color}${params.shape}`;
+                this.monster.body = this.add.image(CENTER_X, CENTER_Y, key);
+                return `Created a ${params.color} type-${params.shape} body.`;
+            }
             // case 'add_mouth':   ...
             // case 'add_antennas': ...
             // case 'get_monster_state': ...
@@ -98,5 +127,5 @@ class MonsterScene extends Phaser.Scene {
             default:
                 return `Unknown command: ${command}`;
         }
-    }
+    }  
 }

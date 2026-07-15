@@ -61,7 +61,7 @@ server.registerTool(
     {
         description: 'Create the monster body. Must be called before adding any other parts. Replaces any existing monster.',
         inputSchema: z.object({
-            color: z.enum(['blue', 'green', 'red', 'yellow', 'dark']).describe('Body color, dark=brown'),
+            color: z.enum(['blue', 'green', 'red', 'yellow', 'dark', 'white']).describe('Body color, dark=brown'),
             shape: z.enum(['A', 'B', 'C', 'D', 'E', 'F']).describe('Body shape variant: A=square, B=round, C=oval, D=squat oval, E=long body, F=long body with hair tufts'),
         }),
     },
@@ -76,6 +76,44 @@ server.registerTool(
 );
 
 // --- TODO: define more tools here
+
+server.registerTool(
+    'add_arms',
+    {
+        description: 'Adds arms to the monster body. There must be an existing body or it will error.',
+        inputSchema: z.object({
+            color: z.enum(['blue', 'green', 'red', 'yellow', 'dark', 'white']).describe('Arm color, dark=brown'),
+            pose: z.enum(['A', 'B', 'C', 'D', 'E']).describe('Arm type variant: A=crab claw, B=skinny, C=three prong, D=bulky, E=bear arm'),
+        }),
+    },
+    async ({ color, pose }) => {
+        try {
+            const reply = await sendToGame('add_arms', { color, pose });
+            return { content: [{ type: 'text', text: reply.result }] };
+        } catch (err) {
+            return { content: [{ type: 'text', text: `Error: ${err.message}` }], isError: true };
+        }
+    }
+);
+
+server.registerTool(
+    'add_legs',
+    {
+        description: 'Adds legs to the monster body. There must be an existing body or it will error.',
+        inputSchema: z.object({
+            color: z.enum(['blue', 'green', 'red', 'yellow', 'dark', 'white']).describe('Leg color, dark=brown'),
+            pose: z.enum(['A', 'B', 'C', 'D', 'E']).describe('Leg type variant: A=normal, B=skinny, C=claws, D=bulky, E=short'),
+        }),
+    },
+    async ({ color, pose }) => {
+        try {
+            const reply = await sendToGame('add_legs', { color, pose });
+            return { content: [{ type: 'text', text: reply.result }] };
+        } catch (err) {
+            return { content: [{ type: 'text', text: `Error: ${err.message}` }], isError: true };
+        }
+    }
+);
 
 
 // -- Start the server on stdio
