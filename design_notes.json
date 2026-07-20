@@ -1,0 +1,62 @@
+[
+  {
+    "timestamp": "2026-07-20T05:28:18.683Z",
+    "lesson": "Style: Neon-Industrial Abomination. Principles: 1. Chromatic Clash (high-sat vs dark), 2. Aggressive Asymmetry (mismatched parts), 3. Scale Distortion (extreme proportions), 4. Sensory Overload (max eyes/antennas)."
+  },
+  {
+    "timestamp": "2026-07-20T05:32:08.292Z",
+    "lesson": "Iteration 1: `build_monster` creates symmetric monsters. To achieve 'Aggressive Asymmetry' and 'Scale Distortion', I must use `create_body` followed by individual `add_*` calls with varying `other.scale` and `other.offset` parameters."
+  },
+  {
+    "timestamp": "2026-07-20T05:34:57.679Z",
+    "lesson": "Iteration 2: Adding multiple sets of limbs creates a 'layered' look but still maintains symmetry. To achieve true 'Aggressive Asymmetry', I must use the `other.offset` parameter in `add_*` calls to shift parts away from their default mirrored positions, or use `other.scale` to create drastic size differences between the pairs."
+  },
+  {
+    "timestamp": "2026-07-20T05:38:46.746Z",
+    "lesson": "Iteration 3: Extreme offsets (e.g., X: 100, Y: -100) can push parts completely off-body or create 'floating' elements. To maintain the 'Abomination' feel without losing the monster's cohesion, offsets should be kept within +/- 50px of the body center, and scale distortions should be applied primarily to the Y-axis for height or X-axis for width without shifting the anchor too far."
+  },
+  {
+    "timestamp": "2026-07-20T05:41:27.751Z",
+    "lesson": "Use the `tint` parameter to introduce neon colors (e.g., bright lime, neon pink) for increased sensory overload and chromatic clash, augmenting the standard color palette."
+  },
+  {
+    "timestamp": "2026-07-20T05:43:59.597Z",
+    "lesson": "Iteration 4: Do not wrap numeric values in quotes (e.g., use -20 instead of '-20') when passing offsets or scales, as this triggers MCP input validation errors. Use white as a base color when applying strong neon tints for maximum vibrancy."
+  },
+  {
+    "timestamp": "2026-07-20T05:44:14.420Z",
+    "lesson": "Iteration 4: Do not wrap numeric values in quotes (e.g., use -20 instead of '-20') when passing offsets or scales, as this triggers MCP input validation errors. Use white as a base color when applying strong neon tints for maximum vibrancy."
+  },
+  {
+    "timestamp": "2026-07-20T05:46:47.407Z",
+    "lesson": "Iteration 5: I am repeatedly making the mistake of passing numbers as strings (e.g., '\"-10\"') instead of numbers (-10). This causes the MCP server to reject several tool calls, leading to missing parts in the final render. I MUST ensure all numeric parameters are passed as raw numbers."
+  },
+  {
+    "timestamp": "2026-07-20T05:48:51.786Z",
+    "lesson": "Pass hex color tints as straight strings (e.g., \"#5241ff\") without additional wrapping or special characters."
+  },
+  {
+    "timestamp": "2026-07-20T05:54:34.558Z",
+    "lesson": "Final Recipe for 'Neon-Industrial Abomination' style: \n1. Body: Dark color, Shape B or F.\n2. Limbs: Use 'white' as base color and apply neon hex tints (#FF00FF, #00FF00, #00FFFF, #FFFF00).\n3. Asymmetry: Use sequential add_* calls instead of build_monster; apply varying scales (0.2x to 2.5x) and small offsets (+/- 30px).\n4. Overload: 3 eyes (psycho_light), 2 antennas (horn_large) with high Y-scale.\n5. Technical constraints: ALWAYS pass numeric offsets/scales as numbers, not strings. Pass hex tints as straight strings."
+  },
+  {
+    "timestamp": "2026-07-20T06:04:13.679Z",
+    "lesson": "Iteration 6: Successfully applied the \"Neon-Industrial Abomination\" recipe. Resulted in high sensory overload with conflicting neon colors (#FF00FF, #00FFFF, #00FF00, #FFFF00) and extreme limb asymmetry (scales 0.4x to 2.0x). Using multiple sequential add_* calls for limbs effectively creates a layered, distorted silhouette."
+  },
+  {
+    "timestamp": "2026-07-20T06:05:18.644Z",
+    "lesson": "Iteration 7: Experimented with Shape F (long body) for a more vertical silhouette. Pushed asymmetry further with extreme scale differences (0.3x vs 2.2x) and offsets (+/- 40px). Used Type I mouth (monster scream) for added aggression. Neon color palette shifted to Cyan (#00FFFF) and Magenta (#FF00FF) as primary accents, with Green (#00FF00) for antennas and legs."
+  },
+  {
+    "timestamp": "2026-07-20T06:10:24.195Z",
+    "lesson": "Iteration 8: Focused on anatomical coherence. Reduced offsets (±10-15px) and moderated scales (0.8x to 1.1x) to ensure limbs are anchored to the body. Maintained the high-contrast neon palette (#FF00FF, #00FFFF, #00FF00, #FFFF00) and subtle asymmetry, resulting in a more stable but still \"abominable\" silhouette."
+  },
+  {
+    "timestamp": "2026-07-20T06:13:08.363Z",
+    "lesson": "Iteration 9: Refined anatomical coherence while rotating the neon accent palette. Used a combination of Pose C/B for arms and A/D for legs to create a different structural feel. Swapped neon highlights: eyes are now yellow (#FFFF00), mouth is cyan (#00FFFF), and antennas are magenta (#FF00FF). Confirmed that moderate offsets (±10-15px) maintain attachment and structural integrity."
+  },
+  {
+    "timestamp": "2026-07-20T06:15:51.154Z",
+    "lesson": "Iteration 10: Focused on \"Industrial\" asymmetry by pairing bulky (Pose D) and skinny (Pose B) arms, and short (Pose E) vs clawed (Pose C) legs. Maintained the anatomical coherence of Iterations 8-9. The color palette now emphasizes a Green-Yellow-Magenta-Cyan split, with a Type F mouth and high-scale horn antennas for a more aggressive, overloaded look."
+  }
+]
